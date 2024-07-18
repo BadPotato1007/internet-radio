@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Radio Player</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #backgroundVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        .radio-container {
+            z-index: 1;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <video id="backgroundVideo" autoplay loop muted>
+        <source src="https://audiomotion.app/backgrounds/Starfield.mp4" type="video/mp4">
+        Your browser does not support my site! sorry!
+    </video>
+    <div class="radio-container text-white">
+        <h1 class="text-4xl font-bold mb-4">Cool internet radio player!</h1>
+        <audio id="radioPlayer" autoplay>
+            <source src="https://playerservices.streamtheworld.com/api/livestream-redirect/977_HITS.mp3" type="audio/mpeg">
+            Your browser does not support my site! sorry!
+        </audio>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const radioPlayer = document.getElementById('radioPlayer');
+            radioPlayer.play().catch(error => {
+                console.error('Failed to play the audio automatically:', error);
+            });
+        });
+    </script>
+</body>
+</html>
